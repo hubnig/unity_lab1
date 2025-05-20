@@ -1,6 +1,5 @@
 ```mermaid
 classDiagram
-    %% Enumerations as обычные классы без стереотипов
     class Role {
         ADMIN
         USER
@@ -174,4 +173,3 @@ classDiagram
     ProductGenre --> Genre
     ProductTag --> Product
     ProductTag --> Tag
-\```
