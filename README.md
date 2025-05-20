@@ -1,17 +1,16 @@
 ```mermaid
 classDiagram
-    %% Enumerations
-    class Role <<enumeration>> {
-        <<enum>> ADMIN
-        <<enum>> USER
-        <<enum>> GUEST
+    %% Enumerations as обычные классы без стереотипов
+    class Role {
+        ADMIN
+        USER
+        GUEST
     }
-    class Activation <<enumeration>>
-    class Region <<enumeration>>
-    class OrderStatus <<enumeration>>
-    class RequirementType <<enumeration>>
+    class Activation
+    class Region
+    class OrderStatus
+    class RequirementType
 
-    %% User
     class User {
       +int id
       +varchar email
@@ -26,7 +25,6 @@ classDiagram
     User "1" --> "*" Review
     User "1" --> "*" Favorite
 
-    %% Product
     class Product {
       +int id
       +varchar title
@@ -52,7 +50,6 @@ classDiagram
     Product "1" <-- "*" ProductGenre : genres
     Product "1" <-- "*" ProductTag : tags
 
-    %% GameKey
     class GameKey {
       +int id
       +int productId
@@ -65,7 +62,6 @@ classDiagram
     GameKey --> Product
     GameKey --> OrderItem
 
-    %% Order, OrderItem, Payment
     class Order {
       +int id
       +int userId
@@ -98,7 +94,6 @@ classDiagram
     }
     Payment --> Order
 
-    %% CartItem
     class CartItem {
       +int id
       +int userId
@@ -109,7 +104,6 @@ classDiagram
     CartItem --> User
     CartItem --> Product
 
-    %% Review
     class Review {
       +int id
       +int rating
@@ -121,7 +115,6 @@ classDiagram
     Review --> User
     Review --> Product
 
-    %% Favorite
     class Favorite {
       +int userId
       +int productId
@@ -129,7 +122,6 @@ classDiagram
     Favorite --> User
     Favorite --> Product
 
-    %% SystemRequirement
     class SystemRequirement {
       +int id
       +RequirementType type
@@ -142,7 +134,6 @@ classDiagram
     }
     SystemRequirement --> Product
 
-    %% Screenshot
     class Screenshot {
       +int id
       +varchar url
@@ -151,7 +142,6 @@ classDiagram
     }
     Screenshot --> Product
 
-    %% Publisher & Developer
     class Publisher {
       +int id
       +varchar name
@@ -163,7 +153,6 @@ classDiagram
     Product --> Publisher
     Product --> Developer
 
-    %% Genre & Tag
     class Genre {
       +int id
       +varchar name
@@ -173,7 +162,6 @@ classDiagram
       +varchar name
     }
 
-    %% Junction tables
     class ProductGenre {
       +int productId
       +int genreId
@@ -186,5 +174,4 @@ classDiagram
     ProductGenre --> Genre
     ProductTag --> Product
     ProductTag --> Tag
-
 \```
